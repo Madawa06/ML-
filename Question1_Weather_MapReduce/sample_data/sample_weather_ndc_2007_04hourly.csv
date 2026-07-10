@@ -1,12 +1,12 @@
-Wban,YearMonthDay,Time,StationType,SkyCondition,SkyConditionFlag,Visibility,VisibilityFlag,WeatherType,WeatherTypeFlag,DryBulbFarenheit,DryBulbFarenheitFlag,DryBulbCelsius,DryBulbCelsiusFlag,WetBulbFarenheit,WetBulbFarenheitFlag,WetBulbCelsius,WetBulbCelsiusFlag,DewPointFarenheit,DewPointFarenheitFlag,DewPointCelsius,DewPointCelsiusFlag,RelativeHumidity,RelativeHumidityFlag,WindSpeed,WindSpeedFlag,WindDirection,WindDirectionFlag,ValueForWindCharacter,ValueForWindCharacterFlag,StationPressure,StationPressureFlag,PressureTendency,PressureTendencyFlag,PressureChange,PressureChangeFlag,SeaLevelPressure,SeaLevelPressureFlag,RecordType,RecordTypeFlag,HourlyPrecip,HourlyPrecipFlag,Altimeter,AltimeterFlag
-14732,20070401,0053,AO2,CLR,,10,,,,52,,11.1,,49,,9.4,,45,,7.2,,78,,7,,270,,,,29.9,,,,,,29.9,,AA,,0,,29.95,
-14732,20070401,0153,AO2,CLR,,10,,,,51,,10.6,,48,,8.9,,44,,6.7,,79,,6,,260,,,,29.9,,,,,,29.9,,AA,,0,,29.95,
-14732,20070401,1253,AO2,FEW,,10,,,,64,,17.8,,55,,12.8,,42,,5.6,,52,,12,,250,,,,29.85,,,,,,29.85,,AA,,0,,29.9,
-14732,20070401,1353,AO2,FEW,,10,,,,66,,18.9,,56,,13.3,,42,,5.6,,49,,13,,250,,,,29.84,,,,,,29.84,,AA,,0,,29.89,
-14732,20070402,0053,AO2,CLR,,10,,,,50,,10.0,,47,,8.3,,43,,6.1,,80,,5,,280,,,,29.92,,,,,,29.92,,AA,,0,,29.97,
-14732,20070402,1253,AO2,SCT,,10,,,,62,,16.7,,54,,12.2,,41,,5.0,,55,,10,,260,,,,29.88,,,,,,29.88,,AA,,0,,29.93,
-14732,20070402,1353,AO2,SCT,,10,,,,63,,17.2,,M,,M,,M,,M,,M,,11,,260,,,,29.87,,,,,,29.87,,AA,,0,,29.92,
-99999,20070401,0053,AO2,CLR,,10,,,,58,,14.4,,52,,11.1,,46,,7.8,,63,,9,,300,,,,29.8,,,,,,29.8,,AA,,0,,29.85,
-99999,20070401,1253,AO2,FEW,,10,,,,71,,21.7,,59,,15.0,,44,,6.7,,44,,15,,290,,,,29.78,,,,,,29.78,,AA,,0,,29.83,
-99999,20070402,0053,AO2,CLR,,10,,,,57,,13.9,,51,,10.6,,45,,7.2,,64,,8,,300,,,,29.82,,,,,,29.82,,AA,,0,,29.87,
-99999,20070402,1253,AO2,BKN,,8,,,,68,,20.0,,58,,14.4,,45,,7.2,,48,,18,,280,,,,29.79,,,,,,29.79,,AA,,0.02,,29.84,
+Wban Number, YearMonthDay, Time, Station Type, Maintenance Indicator, Sky Conditions, Visibility, Weather Type, Dry Bulb Temp, Dew Point Temp, Wet Bulb Temp, % Relative Humidity, Wind Speed (kt), Wind Direction, Wind Char. Gusts (kt), Val for Wind Char., Station Pressure, Pressure Tendency, Sea Level Pressure, Record Type, Precip. Total
+14732,20070401,0053,AO2,,CLR,10,,52,45,49,78,7,270,,,29.9,,29.9,AA,0
+14732,20070401,0153,AO2,,CLR,10,,51,44,48,79,6,260,,,29.9,,29.9,AA,0
+14732,20070401,1253,AO2,,FEW,10,,64,42,55,52,12,250,,,29.85,,29.85,AA,0
+14732,20070401,1353,AO2,,FEW,10,,66,42,56,49,13,250,,,29.84,,29.84,AA,0
+14732,20070402,0053,AO2,,CLR,10,,50,43,47,80,5,280,,,29.92,,29.92,AA,0
+14732,20070402,1253,AO2,,SCT,10,,62,41,54,55,10,260,,,29.88,,29.88,AA,0
+14732,20070402,1353,AO2,,SCT,10,,63,M,M,M,11,260,,,29.87,,29.87,AA,0
+99999,20070401,0053,AO2,,CLR,10,,58,46,52,63,9,300,,,29.8,,29.8,AA,0
+99999,20070401,1253,AO2,,FEW,10,,71,44,59,44,15,290,,,29.78,,29.78,AA,0
+99999,20070402,0053,AO2,,CLR,10,,57,45,51,64,8,300,,,29.82,,29.82,AA,0
+99999,20070402,1253,AO2,,BKN,8,,68,45,58,48,18,280,,,29.79,,29.79,AA,0.02

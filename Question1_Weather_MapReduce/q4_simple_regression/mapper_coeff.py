@@ -9,8 +9,8 @@ PSEUDOCODE (matches the coursework's Statistical Computation Guide)
 for each line of input:
     fields <- split(line, ",")
     if line is the CSV header: skip it
-    x <- float(fields[DewPointCelsius])     # explanatory variable
-    y <- float(fields[DryBulbCelsius])      # response variable
+    x <- float(fields[DewPointTemp])     # explanatory variable
+    y <- float(fields[DryBulbTemp])      # response variable
     if x and y are both valid:
         emit(key = "constant_identifier", value = (x, y))
 
@@ -27,8 +27,8 @@ for raw_line in sys.stdin:
     if fields is None:
         continue
 
-    x = get_field(fields, "DewPointCelsius")   # explanatory variable
-    y = get_field(fields, "DryBulbCelsius")    # response variable
+    x = get_field(fields, "DewPointTemp")   # explanatory variable
+    y = get_field(fields, "DryBulbTemp")    # response variable
 
     if x is not None and y is not None:
         print(f"constant_identifier\t{x},{y}")

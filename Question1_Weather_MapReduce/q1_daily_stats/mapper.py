@@ -10,7 +10,7 @@ for each line of input:
     fields <- split(line, ",")
     if line is the CSV header: skip it
     date <- fields[YearMonthDay]                      # e.g. "20070401"
-    dbt  <- float(fields[DryBulbCelsius])
+    dbt  <- float(fields[DryBulbTemp])
     wspd <- float(fields[WindSpeed])
     if dbt is a valid reading:
         emit(key = date, value = ("DBT", dbt))
@@ -31,7 +31,7 @@ for raw_line in sys.stdin:
 
     date = fields[IDX["YearMonthDay"]].strip()
 
-    dry_bulb_temp = get_field(fields, "DryBulbCelsius")
+    dry_bulb_temp = get_field(fields, "DryBulbTemp")
     if dry_bulb_temp is not None:
         print(f"{date}\tDBT,{dry_bulb_temp}")
 

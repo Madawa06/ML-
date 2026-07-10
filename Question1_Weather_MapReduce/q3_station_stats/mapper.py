@@ -11,7 +11,7 @@ for each line of input:
     fields <- split(line, ",")
     if line is the CSV header: skip it
     station <- fields[Wban]
-    dbt  <- float(fields[DryBulbCelsius])
+    dbt  <- float(fields[DryBulbTemp])
     wspd <- float(fields[WindSpeed])
     if dbt valid:
         emit(key = station + "_DBT", value = dbt)
@@ -26,9 +26,9 @@ for raw_line in sys.stdin:
     if fields is None:
         continue
 
-    station = fields[IDX["Wban"]].strip()
+    station = fields[IDX["WbanNumber"]].strip()
 
-    dry_bulb_temp = get_field(fields, "DryBulbCelsius")
+    dry_bulb_temp = get_field(fields, "DryBulbTemp")
     if dry_bulb_temp is not None:
         print(f"{station}_DBT\t{dry_bulb_temp}")
 

@@ -1,6 +1,6 @@
 # Question 1 — Distributed Weather Data Analysis and Predictive Modelling
 
-**Dataset:** `Weather_NDC_2007_04hourly` (NCDC hourly surface weather
+**Dataset:** `Weather_NCDC_2007_04hourly` (NCDC hourly surface weather
 observations, April 2007).
 
 All five deliverables are implemented as classic **Hadoop Streaming**
@@ -34,17 +34,17 @@ commands below) or placed on `PYTHONPATH` for local testing.
 Before running on the cluster, check your actual file's header:
 
 ```bash
-head -1 Weather_NDC_2007_04hourly.txt
+head -1 Weather_NCDC_2007_04hourly.txt
 ```
 
-`weather_columns.py`'s `COLUMN_NAMES` list encodes the standard NCDC
-hourly column order (`Wban, YearMonthDay, Time, ..., DryBulbCelsius,
-..., WetBulbCelsius, ..., DewPointCelsius, ..., RelativeHumidity, ...,
-WindSpeed, ...`). If your copy differs, edit that one list — every
-job looks columns up by name (`get_field(fields, "DryBulbCelsius")`),
-so a single edit fixes all five deliverables. Missing NCDC readings
-(marked `M` or left blank) are automatically skipped rather than
-crashing the job or being parsed as `0`.
+`weather_columns.py`'s `COLUMN_NAMES` list encodes the real 21-column
+order confirmed from the dataset supplied for this coursework
+(`WbanNumber, YearMonthDay, Time, ..., DryBulbTemp, DewPointTemp,
+WetBulbTemp, RelativeHumidity, WindSpeed, ...`). If your copy differs,
+edit that one list — every job looks columns up by name
+(`get_field(fields, "DryBulbTemp")`), so a single edit fixes all five
+deliverables. Missing readings (marked `M` or left blank) are
+automatically skipped rather than crashing the job or being parsed as `0`.
 
 ## Deliverable 1 — Daily Dry Bulb Temp stats + daily Wind Speed stats
 
@@ -69,7 +69,7 @@ Code: `q1_daily_stats/mapper.py`, `q1_daily_stats/reducer.py`
 
 Chosen variables: **Dew Point Temp** and **Relative Humidity** against
 Dry Bulb Temp (edit the two `get_field(...)` calls in the mapper to pick
-different variables, e.g. `WetBulbCelsius` or `WindSpeed`).
+different variables, e.g. `WetBulbTemp` or `WindSpeed`).
 
 **Pseudocode**
 ```
@@ -176,7 +176,7 @@ dataset once you've confirmed the column order matches
 Upload the data first:
 ```bash
 hdfs dfs -mkdir -p /user/$USER/weather
-hdfs dfs -put Weather_NDC_2007_04hourly.txt /user/$USER/weather/
+hdfs dfs -put Weather_NCDC_2007_04hourly.txt /user/$USER/weather/
 ```
 
 **Deliverable 1:**
@@ -184,7 +184,7 @@ hdfs dfs -put Weather_NDC_2007_04hourly.txt /user/$USER/weather/
 hadoop jar $HADOOP_STREAMING_JAR \
   -files q1_daily_stats/mapper.py,q1_daily_stats/reducer.py,weather_columns.py \
   -mapper mapper.py -reducer reducer.py \
-  -input /user/$USER/weather/Weather_NDC_2007_04hourly.txt \
+  -input /user/$USER/weather/Weather_NCDC_2007_04hourly.txt \
   -output /user/$USER/weather/out_q1_daily_stats
 hdfs dfs -cat /user/$USER/weather/out_q1_daily_stats/part-* | head
 ```
@@ -198,7 +198,7 @@ Deliverables 2 and 3 follow the identical pattern — just swap the
 hadoop jar $HADOOP_STREAMING_JAR \
   -files q4_simple_regression/mapper_coeff.py,q4_simple_regression/reducer_coeff.py,weather_columns.py \
   -mapper mapper_coeff.py -reducer reducer_coeff.py \
-  -input /user/$USER/weather/Weather_NDC_2007_04hourly.txt \
+  -input /user/$USER/weather/Weather_NCDC_2007_04hourly.txt \
   -output /user/$USER/weather/out_q4_coeff
 hdfs dfs -cat /user/$USER/weather/out_q4_coeff/part-*
 # note the printed slope=... and intercept=... values, then:
@@ -208,7 +208,7 @@ hadoop jar $HADOOP_STREAMING_JAR \
   -files q4_simple_regression/mapper_mse.py,q4_simple_regression/reducer_mse.py,weather_columns.py \
   -mapper mapper_mse.py -reducer reducer_mse.py \
   -cmdenv SLOPE=<value from stage 1> -cmdenv INTERCEPT=<value from stage 1> \
-  -input /user/$USER/weather/Weather_NDC_2007_04hourly.txt \
+  -input /user/$USER/weather/Weather_NCDC_2007_04hourly.txt \
   -output /user/$USER/weather/out_q4_mse
 hdfs dfs -cat /user/$USER/weather/out_q4_mse/part-*
 ```

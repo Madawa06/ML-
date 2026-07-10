@@ -8,7 +8,7 @@
 #     bash run_local_test.sh
 #
 # It uses the tiny synthetic file in sample_data/ - swap DATA for your
-# real Weather_NDC_2007_04hourly file once you have verified its column
+# real Weather_NCDC_2007_04hourly file once you have verified its column
 # order matches weather_columns.py.
 
 set -euo pipefail
@@ -58,7 +58,7 @@ COEFF_LINE=$(python3 q5_multiple_regression/mapper_coeff.py < "$DATA" \
     | python3 q5_multiple_regression/reducer_coeff.py)
 echo "$COEFF_LINE"
 B0=$(echo "$COEFF_LINE" | grep -oP 'intercept=\K[-0-9.eE]+')
-B1=$(echo "$COEFF_LINE" | grep -oP 'coef_DewPointCelsius=\K[-0-9.eE]+')
+B1=$(echo "$COEFF_LINE" | grep -oP 'coef_DewPointTemp=\K[-0-9.eE]+')
 B2=$(echo "$COEFF_LINE" | grep -oP 'coef_RelativeHumidity=\K[-0-9.eE]+')
 echo "Using B0=$B0 B1=$B1 B2=$B2 for stage 2..."
 B0="$B0" B1="$B1" B2="$B2" python3 q5_multiple_regression/mapper_mse.py < "$DATA" \

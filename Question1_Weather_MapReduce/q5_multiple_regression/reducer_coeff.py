@@ -85,8 +85,8 @@ if n > 0:
         # This line is the input the stage-2 job needs (see mapper_mse.py) -
         # copy b0/b1/b2 into -cmdenv B0=... B1=... B2=...
         print(f"n={n}\tintercept={b0}\t"
-              f"coef_DewPointCelsius={b1}\tcoef_RelativeHumidity={b2}")
+              f"coef_DewPointTemp={b1}\tcoef_RelativeHumidity={b2}")
     else:
-        print("error\tsingular matrix: DewPointCelsius and "
+        print("error\tsingular matrix: DewPointTemp and "
               "RelativeHumidity are perfectly collinear in this data, "
               "so unique coefficients cannot be found")

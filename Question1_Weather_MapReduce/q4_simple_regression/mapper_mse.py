@@ -14,8 +14,8 @@ slope, intercept <- read from environment (fitted in stage 1)
 for each line of input:
     fields <- split(line, ",")
     if line is the CSV header: skip it
-    x <- float(fields[DewPointCelsius])
-    y <- float(fields[DryBulbCelsius])
+    x <- float(fields[DewPointTemp])
+    y <- float(fields[DryBulbTemp])
     if x and y are both valid:
         y_hat <- slope * x + intercept
         squared_error <- (y - y_hat) ** 2
@@ -33,8 +33,8 @@ for raw_line in sys.stdin:
     if fields is None:
         continue
 
-    x = get_field(fields, "DewPointCelsius")
-    y = get_field(fields, "DryBulbCelsius")
+    x = get_field(fields, "DewPointTemp")
+    y = get_field(fields, "DryBulbTemp")
 
     if x is not None and y is not None:
         y_hat = SLOPE * x + INTERCEPT

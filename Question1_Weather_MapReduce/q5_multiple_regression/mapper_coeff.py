@@ -10,9 +10,9 @@ PSEUDOCODE
 for each line of input:
     fields <- split(line, ",")
     if line is the CSV header: skip it
-    x1 <- float(fields[DewPointCelsius])
+    x1 <- float(fields[DewPointTemp])
     x2 <- float(fields[RelativeHumidity])
-    y  <- float(fields[DryBulbCelsius])
+    y  <- float(fields[DryBulbTemp])
     if x1, x2 and y are all valid:
         emit(key = "constant_identifier", value = (x1, x2, y))
 
@@ -28,9 +28,9 @@ for raw_line in sys.stdin:
     if fields is None:
         continue
 
-    x1 = get_field(fields, "DewPointCelsius")     # explanatory variable 1
+    x1 = get_field(fields, "DewPointTemp")     # explanatory variable 1
     x2 = get_field(fields, "RelativeHumidity")    # explanatory variable 2
-    y = get_field(fields, "DryBulbCelsius")       # response variable
+    y = get_field(fields, "DryBulbTemp")       # response variable
 
     if x1 is not None and x2 is not None and y is not None:
         print(f"constant_identifier\t{x1},{x2},{y}")

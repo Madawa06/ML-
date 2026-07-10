@@ -21,7 +21,13 @@ Hadoop Streaming represents a (key, value) pair as one tab-separated
 line "key\\tvalue"; here value itself is a small comma-separated tag so
 one reducer group (one date) can hold both DBT and WS records.
 """
+import os
 import sys
+
+# Hadoop Streaming ships weather_columns.py into this task's working
+# directory via -files, but doesn't always put that directory on
+# Python's import path automatically - add it ourselves to be safe.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from weather_columns import parse_fields, get_field, IDX
 
 for raw_line in sys.stdin:
